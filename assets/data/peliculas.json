@@ -1,0 +1,73 @@
+{
+  "categorias": [
+    {
+      "nombre": "Populares",
+      "peliculas": [
+        {
+          "id": 1,
+          "titulo": "Horizonte Final",
+          "imagen": "https://picsum.photos/300/450?random=101",
+          "descripcion": "Una misión espacial descubre una señal que cambia el destino de la tripulación."
+        },
+        {
+          "id": 2,
+          "titulo": "Ciudad de Sombras",
+          "imagen": "https://picsum.photos/300/450?random=102",
+          "descripcion": "Un detective investiga una red de secretos en una metrópoli nocturna."
+        },
+        {
+          "id": 3,
+          "titulo": "Ruta 9",
+          "imagen": "https://picsum.photos/300/450?random=103",
+          "descripcion": "Un viaje inesperado une a extraños que aprenden a confiar entre sí."
+        }
+      ]
+    },
+    {
+      "nombre": "Tendencias",
+      "peliculas": [
+        {
+          "id": 4,
+          "titulo": "Código Aurora",
+          "imagen": "https://picsum.photos/300/450?random=104",
+          "descripcion": "Una programadora descubre un patrón oculto que amenaza con colapsar un sistema global."
+        },
+        {
+          "id": 5,
+          "titulo": "Latidos de Acero",
+          "imagen": "https://picsum.photos/300/450?random=105",
+          "descripcion": "Un atleta y un robot entrenan juntos para competir contra todo pronóstico."
+        },
+        {
+          "id": 6,
+          "titulo": "El Último Mensaje",
+          "imagen": "https://picsum.photos/300/450?random=106",
+          "descripcion": "Un audio perdido revela una verdad que nadie quería escuchar."
+        }
+      ]
+    },
+    {
+      "nombre": "Nuevas Llegadas",
+      "peliculas": [
+        {
+          "id": 7,
+          "titulo": "Luz de Invierno",
+          "imagen": "https://picsum.photos/300/450?random=107",
+          "descripcion": "En un pueblo frío, una maestra inicia un cambio que transforma a todos."
+        },
+        {
+          "id": 8,
+          "titulo": "Mar Abierto",
+          "imagen": "https://picsum.photos/300/450?random=108",
+          "descripcion": "Una tripulación enfrenta tormentas y decisiones difíciles en alta mar."
+        },
+        {
+          "id": 9,
+          "titulo": "Vértigo",
+          "imagen": "https://picsum.photos/300/450?random=109",
+          "descripcion": "Una escaladora regresa a la montaña para cerrar una historia del pasado."
+        }
+      ]
+    }
+  ]
+}
