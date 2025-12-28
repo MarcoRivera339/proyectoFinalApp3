@@ -1,73 +1,94 @@
 {
-  "categorias": [
-    {
-      "nombre": "Populares",
-      "peliculas": [
-        {
-          "id": 1,
-          "titulo": "Horizonte Final",
-          "imagen": "https://picsum.photos/300/450?random=101",
-          "descripcion": "Una misión espacial descubre una señal que cambia el destino de la tripulación."
-        },
-        {
-          "id": 2,
-          "titulo": "Ciudad de Sombras",
-          "imagen": "https://picsum.photos/300/450?random=102",
-          "descripcion": "Un detective investiga una red de secretos en una metrópoli nocturna."
-        },
-        {
-          "id": 3,
-          "titulo": "Ruta 9",
-          "imagen": "https://picsum.photos/300/450?random=103",
-          "descripcion": "Un viaje inesperado une a extraños que aprenden a confiar entre sí."
-        }
-      ]
+  "peliculas": {
+    "1": {
+      "titulo": "Eclipse Final",
+      "anio": 2023,
+      "genero": "Ciencia Ficción",
+      "duracion": "2h 12m",
+      "calificacion": 4.6,
+      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Solar%20eclipse%20in%202005.jpg",
+      "descripcion": "La humanidad enfrenta su última oportunidad cuando el sol comienza a apagarse misteriosamente."
     },
-    {
-      "nombre": "Tendencias",
-      "peliculas": [
-        {
-          "id": 4,
-          "titulo": "Código Aurora",
-          "imagen": "https://picsum.photos/300/450?random=104",
-          "descripcion": "Una programadora descubre un patrón oculto que amenaza con colapsar un sistema global."
-        },
-        {
-          "id": 5,
-          "titulo": "Latidos de Acero",
-          "imagen": "https://picsum.photos/300/450?random=105",
-          "descripcion": "Un atleta y un robot entrenan juntos para competir contra todo pronóstico."
-        },
-        {
-          "id": 6,
-          "titulo": "El Último Mensaje",
-          "imagen": "https://picsum.photos/300/450?random=106",
-          "descripcion": "Un audio perdido revela una verdad que nadie quería escuchar."
-        }
-      ]
+    "2": {
+      "titulo": "Sombras de la Ciudad",
+      "anio": 2022,
+      "genero": "Suspenso",
+      "duracion": "1h 55m",
+      "calificacion": 4.2,
+      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Roppongi%20night.jpg",
+      "descripcion": "Un detective descubre una red de secretos ocultos bajo la aparente calma urbana."
     },
-    {
-      "nombre": "Nuevas Llegadas",
-      "peliculas": [
-        {
-          "id": 7,
-          "titulo": "Luz de Invierno",
-          "imagen": "https://picsum.photos/300/450?random=107",
-          "descripcion": "En un pueblo frío, una maestra inicia un cambio que transforma a todos."
-        },
-        {
-          "id": 8,
-          "titulo": "Mar Abierto",
-          "imagen": "https://picsum.photos/300/450?random=108",
-          "descripcion": "Una tripulación enfrenta tormentas y decisiones difíciles en alta mar."
-        },
-        {
-          "id": 9,
-          "titulo": "Vértigo",
-          "imagen": "https://picsum.photos/300/450?random=109",
-          "descripcion": "Una escaladora regresa a la montaña para cerrar una historia del pasado."
-        }
-      ]
+    "3": {
+      "titulo": "Corazón de Acero",
+      "anio": 2024,
+      "genero": "Acción",
+      "duracion": "2h 5m",
+      "calificacion": 4.8,
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/23/Adrian_helmet_1.jpg",
+      "descripcion": "Un exsoldado lucha contra una corporación que controla armas autónomas."
+    },
+    "4": {
+      "titulo": "La Última Nota",
+      "anio": 2021,
+      "genero": "Drama",
+      "duracion": "1h 48m",
+      "calificacion": 4.1,
+      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/SennMicrophone.jpg",
+      "descripcion": "Un pianista retirado vuelve a los escenarios para enfrentar su pasado."
+    },
+    "5": {
+      "titulo": "Código Fantasma",
+      "anio": 2023,
+      "genero": "Thriller",
+      "duracion": "2h 1m",
+      "calificacion": 4.4,
+      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Anonymous%20Hacker.png",
+      "descripcion": "Un hacker descubre un algoritmo capaz de predecir crímenes."
+    },
+    "6": {
+      "titulo": "Más Allá del Horizonte",
+      "anio": 2020,
+      "genero": "Aventura",
+      "duracion": "2h 20m",
+      "calificacion": 4.3,
+      "imagen": "https://cdn.pixabay.com/photo/2016/06/27/17/38/solar-eclipse-1482921_1280.jpg",
+      "descripcion": "Una expedición cruza territorios desconocidos en busca de una civilización perdida."
+    },
+    "7": {
+      "titulo": "Noche Carmesí",
+      "anio": 2022,
+      "genero": "Terror",
+      "duracion": "1h 42m",
+      "calificacion": 3.9,
+      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Redwood%20National%20Park%2C%20fog%20in%20the%20forest.jpg",
+      "descripcion": "Un pequeño pueblo es acechado por una presencia que solo aparece de noche."
+    },
+    "8": {
+      "titulo": "Destino Paralelo",
+      "anio": 2024,
+      "genero": "Ciencia Ficción",
+      "duracion": "2h 10m",
+      "calificacion": 4.7,
+      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Ditchley%20door.jpg",
+      "descripcion": "Dos realidades colisionan cuando un experimento sale mal."
+    },
+    "9": {
+      "titulo": "Amor en Silencio",
+      "anio": 2021,
+      "genero": "Romance",
+      "duracion": "1h 50m",
+      "calificacion": 4.0,
+      "imagen": "https://upload.wikimedia.org/wikipedia/en/2/20/Amor_en_silencio_poster.jpg",
+      "descripcion": "Una historia de amor que se comunica más con miradas que con palabras."
+    },
+    "10": {
+      "titulo": "Ruta Salvaje",
+      "anio": 2023,
+      "genero": "Acción",
+      "duracion": "2h 8m",
+      "calificacion": 4.5,
+      "imagen": "https://www.newtral.es/wp-content/uploads/2021/08/hacia_rutas_salvajes_historia_real-1536x946.jpg",
+      "descripcion": "Una carrera ilegal se convierte en una lucha por sobrevivir."
     }
-  ]
+  }
 }

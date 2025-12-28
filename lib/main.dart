@@ -1,10 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:proyecto/navigations/Drawer.dart';
+import 'package:proyecto/firebase_options.dart';
+import 'package:proyecto/screens/homeScreen.dart';
 import 'package:proyecto/screens/loginScreen.dart';
+import 'package:proyecto/screens/moviesList.dart';
 import 'package:proyecto/screens/registerScreen.dart';
 
-void main() {
-  runApp(Proyecto());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(const Proyecto());
 }
 
 class Proyecto extends StatelessWidget {
@@ -12,69 +17,18 @@ class Proyecto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Cuerpo());
-  }
-}
+    return MaterialApp(
+      debugShowCheckedModeBanner: true,
+      //rutas
+      routes: {
+        "/login": (context) => LoginScreen(),
+        "/registro": (context) => Registerscreen(),
+        "/drawer": (context) => Drawer(),
+        "/moviesList": (context) => Movieslist(),
+        "/home": (context) => Homescreen(),
+      },
 
-class Cuerpo extends StatelessWidget {
-  const Cuerpo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(title: Text("ONEFLIX")),
-      drawer: MyDrawer(),
-      body: Stack(
-        children: [
-          SizedBox.expand(
-            child: Image.asset("images/oneflixC.png", fit: BoxFit.cover),
-          ),
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text("Entretenimiento de calidad"),
-                SizedBox(
-                  width: 220,
-                  height: 50,
-                  child: FilledButton(
-                    onPressed: () {
-                      irLogin(context);
-                    },
-                    child: Text("Login"),
-                  ),
-                ),
-                SizedBox(height: 20),
-                SizedBox(
-                  width: 220,
-                  height: 50,
-                  child: OutlinedButton(
-                    onPressed: () {
-                      irRegister(context);
-                    },
-                    child: const Text("REGISTER"),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+      home: Homescreen(),
     );
   }
-}
-
-void irLogin(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => Loginscreen()),
-  );
-}
-
-void irRegister(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => Registerscreen()),
-  );
 }

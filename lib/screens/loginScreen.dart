@@ -1,51 +1,84 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class Loginscreen extends StatefulWidget {
-  const Loginscreen({super.key});
-
-  @override
-  State<Loginscreen> createState() => _LoginscreenState();
-}
-
-class _LoginscreenState extends State<Loginscreen> {
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Login")),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: email,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                label: Text("Ingresa tu email"),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: password,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                label: Text("Ingresa tu contrasenia"),
-              ),
-            ),
-          ),
-          ElevatedButton.icon(
-            onPressed: () => login(),
-            label: Text("Login"),
-            icon: Icon(Icons.monitor_weight_rounded),
+      body: formulario(context),
+    );
+  }
+}
+
+Widget formulario(context) {
+  TextEditingController correo = TextEditingController();
+  TextEditingController contrasenia = TextEditingController();
+
+  return Column(
+    children: [
+      TextField(
+        controller: correo,
+        decoration: InputDecoration(label: Text("Ingresar correo")),
+      ),
+
+      TextField(
+        controller: contrasenia,
+        obscureText: true,
+        decoration: InputDecoration(label: Text("Ingresar contrasenia")),
+      ),
+
+      FilledButton.icon(
+        onPressed: () => login(context, correo, contrasenia),
+        icon: const Icon(Icons.login),
+        label: const Text("Ingresar"),
+      ),
+      FilledButton.icon(
+        onPressed: () => Navigator.pushNamed(context, "/registro"),
+        label: const Text("Registrate"),
+        icon: const Icon(Icons.person_add),
+      ),
+    ],
+  );
+}
+
+Future<void> login(
+  BuildContext context,
+  TextEditingController correo,
+  TextEditingController contrasenia,
+) async {
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: correo.text.trim(),
+      password: contrasenia.text.trim(),
+    );
+
+    Navigator.pushReplacementNamed(context, "/drawer");
+  } on FirebaseAuthException catch (e) {
+    String mensaje = "Ocurrió un error inesperado";
+
+    if (e.code == 'user-not-found' || e.code == 'invalid-credential') {
+      mensaje = 'El correo o la contraseña no son correctos.';
+    } else if (e.code == 'wrong-password') {
+      mensaje = 'Contraseña incorrecta.';
+    } else if (e.code == 'invalid-email') {
+      mensaje = 'El formato del correo es inválido.';
+    }
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Error de inicio de sesión"),
+        content: Text(mensaje),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Aceptar"),
           ),
         ],
       ),
     );
   }
 }
-
-void login() {}

@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class Registerscreen extends StatefulWidget {
@@ -83,7 +85,15 @@ class _RegisterscreenState extends State<Registerscreen> {
           ),
 
           ElevatedButton.icon(
-            onPressed: () => register(),
+            onPressed: () => register(
+              context,
+              cedula,
+              nombre,
+              apellido,
+              edad,
+              email,
+              password,
+            ),
             label: Text("Register"),
             icon: Icon(Icons.monitor_weight_rounded),
           ),
@@ -93,4 +103,60 @@ class _RegisterscreenState extends State<Registerscreen> {
   }
 }
 
-void register() {}
+Future<void> register(
+  context,
+  cedula,
+  nombre,
+  apellido,
+  edad,
+  email,
+  password,
+) async {
+  try {
+    // 1. Creamos el usuario
+    UserCredential userCredential = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+          email: email.text.trim(),
+          password: password.text.trim(),
+        );
+
+    String uid = userCredential.user!.uid;
+
+    // 2. Guardamos datos
+    DatabaseReference ref = FirebaseDatabase.instance.ref("usuarios/$uid");
+    await ref.set({
+      "cedula": cedula.text,
+      "nombre": nombre.text,
+      "apellido": apellido.text,
+      "edad": edad.text,
+      "email": email.text,
+    });
+
+    // 3. CERRAR SESIÓN para que no entre directo
+    await FirebaseAuth.instance.signOut();
+    await FirebaseAuth.instance.signOut();
+
+    // 4. Mostrar el diálogo
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Registro Exitoso"),
+          content: const Text("Ahora inicia sesión con tu cuenta."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, "/login");
+                Navigator.pop(context, "/login");
+              },
+              child: const Text("IR AL LOGIN"),
+            ),
+          ],
+        );
+      },
+    );
+  } catch (e) {
+    print("Error: $e");
+  }
+}
