@@ -44,18 +44,15 @@ Widget formulario(context) {
   );
 }
 
-Future<void> login(
-  BuildContext context,
-  TextEditingController correo,
-  TextEditingController contrasenia,
-) async {
+Future<void> login(context, correo, contrasenia) async {
   try {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: correo.text.trim(),
       password: contrasenia.text.trim(),
     );
 
-    Navigator.pushReplacementNamed(context, "/drawer");
+    // 👇 ESTO ES LA CLAVE
+    Navigator.pop(context);
   } on FirebaseAuthException catch (e) {
     String mensaje = "Ocurrió un error inesperado";
 
@@ -69,7 +66,7 @@ Future<void> login(
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (_) => AlertDialog(
         title: const Text("Error de inicio de sesión"),
         content: Text(mensaje),
         actions: [

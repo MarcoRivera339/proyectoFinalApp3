@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'video_player_screen.dart';
+
 
 class Movieslist extends StatelessWidget {
   const Movieslist({super.key});
@@ -16,58 +18,77 @@ class Movieslist extends StatelessWidget {
 class ListaPeliculas extends StatelessWidget {
   const ListaPeliculas({super.key});
 
-  Future<List<Map<String, dynamic>>> leerPeliculas(BuildContext context) async {
+  Future<Map<String, dynamic>> leerCategorias(BuildContext context) async {
     final jsonString = await DefaultAssetBundle.of(
       context,
     ).loadString('data/peliculas.json');
 
     final Map<String, dynamic> data = json.decode(jsonString);
-
-    final Map<String, dynamic> peliculasMap = Map<String, dynamic>.from(
-      data['peliculas'],
-    );
-
-    return peliculasMap.entries.map((entry) {
-      return {"id": entry.key, ...Map<String, dynamic>.from(entry.value)};
-    }).toList();
+    return Map<String, dynamic>.from(data['categorias']);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Map<String, dynamic>>>(
-      future: leerPeliculas(context),
+    return FutureBuilder<Map<String, dynamic>>(
+      future: leerCategorias(context),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (snapshot.hasError) {
+        if (snapshot.hasError || !snapshot.hasData) {
           return const Center(child: Text('Error al cargar películas'));
         }
 
-        if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return const Center(child: Text('No hay películas'));
-        }
+        final categorias = snapshot.data!;
 
-        final peliculas = snapshot.data!;
-
-        return ListView.builder(
-          itemCount: peliculas.length,
-          itemBuilder: (context, index) {
-            final pelicula = peliculas[index];
-
-            return ListTile(
-              leading: Image.asset(
-                pelicula['imagen'],
-                width: 50,
-                height: 70,
-                fit: BoxFit.cover,
-              ),
-              title: Text(pelicula['titulo']),
-              subtitle: Text('${pelicula['genero']} • ${pelicula['anio']}'),
-              onTap: () => mostrarInfo(context, pelicula),
+        return ListView(
+          children: categorias.entries.map((entry) {
+            final String nombreCategoria = entry.key;
+            final List peliculas = List<Map<String, dynamic>>.from(
+              entry.value['peliculas'],
             );
-          },
+
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // 📌 TÍTULO DE LA CATEGORÍA
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                  child: Text(
+                    nombreCategoria,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+
+                // 🎬 PELÍCULAS DE LA CATEGORÍA
+                ...peliculas.map((pelicula) {
+                  final peli = Map<String, dynamic>.from(pelicula);
+
+                  return ListTile(
+                    leading: Image.network(
+                      peli['imagen'],
+                      width: 50,
+                      height: 70,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => const Icon(Icons.movie),
+                    ),
+                    title: Text(peli['titulo']),
+                    subtitle: Text('${peli['genero']} • ${peli['anio']}'),
+                    onTap: () => mostrarInfo(context, peli),
+                  );
+                }).toList(),
+
+                const Divider(thickness: 1),
+              ],
+            );
+          }).toList(),
         );
       },
     );
@@ -83,7 +104,10 @@ void mostrarInfo(BuildContext context, Map<String, dynamic> pelicula) {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(pelicula['imagen']),
+            Image.network(
+              pelicula['imagen'],
+              errorBuilder: (_, __, ___) => const Icon(Icons.movie, size: 100),
+            ),
             const SizedBox(height: 10),
             Text('Género: ${pelicula['genero']}'),
             Text('Año: ${pelicula['anio']}'),
@@ -94,6 +118,20 @@ void mostrarInfo(BuildContext context, Map<String, dynamic> pelicula) {
         ),
       ),
       actions: [
+        ElevatedButton.icon(
+          icon: const Icon(Icons.play_arrow),
+          label: const Text("Reproducir película"),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+          onPressed: () {
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => VideoPlayerScreen(videoUrl: pelicula['video']),
+              ),
+            );
+          },
+        ),
         TextButton(
           onPressed: () => Navigator.pop(context),
           child: const Text('Cerrar'),

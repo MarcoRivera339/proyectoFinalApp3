@@ -3,87 +3,108 @@ import 'package:flutter/material.dart';
 import 'package:proyecto/screens/loginScreen.dart';
 import 'package:proyecto/screens/registerScreen.dart';
 
-class Homescreen extends StatelessWidget {
+class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
 
   @override
+  State<Homescreen> createState() => _HomescreenState();
+}
+
+class _HomescreenState extends State<Homescreen> {
+  late final Stream<User?> _authStream;
+
+  @override
+  void initState() {
+    super.initState();
+    _authStream = FirebaseAuth.instance.authStateChanges();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: Text("ONEFLIX"),
-        actions: [
-          // Botón para cerrar sesión
-          StreamBuilder<User?>(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) return const SizedBox.shrink();
+    return StreamBuilder<User?>(
+      stream: _authStream,
+      builder: (context, snapshot) {
 
-              return IconButton(
-                icon: const Icon(Icons.exit_to_app),
-                onPressed: () async {
-                  await FirebaseAuth.instance.signOut();
-                  Navigator.pushReplacementNamed(context, "/home");
-                },
-              );
-            },
-          ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          SizedBox.expand(
-            child: Opacity(
-              opacity: 0.5,
-              child: Image.asset("images/oneflixC.png", fit: BoxFit.cover),
-            ),
-          ),
+        // ⏳ Esperando Firebase
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
 
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text("Entretenimiento de calidad"),
-                SizedBox(
-                  width: 220,
-                  height: 50,
-                  child: FilledButton(
-                    onPressed: () {
-                      irLogin(context);
-                    },
-                    child: Text("Login"),
+        // 🔐 Usuario logueado → Drawer
+        if (snapshot.hasData) {
+          return const Drawer();
+        }
+
+        // 👤 Usuario NO logueado → Home público
+        return Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            title: const Text("ONEFLIX"),
+          ),
+          body: Stack(
+            children: [
+              SizedBox.expand(
+                child: Opacity(
+                  opacity: 0.5,
+                  child: Image.asset(
+                    "images/oneflixC.png",
+                    fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(height: 20),
-                SizedBox(
-                  width: 220,
-                  height: 50,
-                  child: OutlinedButton(
-                    onPressed: () {
-                      irRegister(context);
-                    },
-                    child: const Text("REGISTER"),
-                  ),
+              ),
+
+              Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      "Entretenimiento de calidad",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    const SizedBox(height: 20),
+
+                    SizedBox(
+                      width: 220,
+                      height: 50,
+                      child: FilledButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const LoginScreen(),
+                            ),
+                          );
+                        },
+                        child: const Text("Login"),
+                      ),
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    SizedBox(
+                      width: 220,
+                      height: 50,
+                      child: OutlinedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const Registerscreen(),
+                            ),
+                          );
+                        },
+                        child: const Text("REGISTER"),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
-}
-
-void irLogin(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => LoginScreen()),
-  );
-}
-
-void irRegister(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => Registerscreen()),
-  );
 }

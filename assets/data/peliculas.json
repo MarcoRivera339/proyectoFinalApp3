@@ -1,94 +1,159 @@
 {
-  "peliculas": {
-    "1": {
-      "titulo": "Eclipse Final",
-      "anio": 2023,
-      "genero": "Ciencia Ficción",
-      "duracion": "2h 12m",
-      "calificacion": 4.6,
-      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Solar%20eclipse%20in%202005.jpg",
-      "descripcion": "La humanidad enfrenta su última oportunidad cuando el sol comienza a apagarse misteriosamente."
+  "categorias": {
+    "accion": {
+      "nombre": "Acción",
+      "peliculas": [
+        {
+          "id": "3",
+          "titulo": "Corazón de Acero",
+          "anio": 2024,
+          "genero": "Acción",
+          "duracion": "2h 5m",
+          "calificacion": 4.8,
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/23/Adrian_helmet_1.jpg",
+          "descripcion": "Un exsoldado lucha contra una corporación que controla armas autónomas.",
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/CORAZONES%20DE%20ACERO%20-%20Tr%C3%A1iler%20Oficial%20en%20ESPA%C3%91OL%20_%20Sony%20Pictures%20Espa%C3%B1a.mp4"
+        },
+        {
+          "id": "10",
+          "titulo": "Ruta Salvaje",
+          "anio": 2023,
+          "genero": "Acción",
+          "duracion": "2h 8m",
+          "calificacion": 4.5,
+          "imagen": "https://cdn.pixabay.com/photo/2014/12/01/15/54/red-deer-552913_1280.jpg",
+          "descripcion": "Una carrera ilegal se convierte en una lucha por sobrevivir.",
+          "video": ""
+        },
+        {
+          "id": "5",
+          "titulo": "Código Fantasma",
+          "anio": 2023,
+          "genero": "Thriller",
+          "duracion": "2h 1m",
+          "calificacion": 4.4,
+          "imagen": "https://cdn.pixabay.com/photo/2016/08/02/17/02/stairs-1564112_1280.jpg",
+          "descripcion": "Un hacker descubre un algoritmo capaz de predecir crímenes.",
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+        }
+      ]
     },
-    "2": {
-      "titulo": "Sombras de la Ciudad",
-      "anio": 2022,
-      "genero": "Suspenso",
-      "duracion": "1h 55m",
-      "calificacion": 4.2,
-      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Roppongi%20night.jpg",
-      "descripcion": "Un detective descubre una red de secretos ocultos bajo la aparente calma urbana."
+
+    "ciencia_ficcion": {
+      "nombre": "Ciencia Ficción",
+      "peliculas": [
+        {
+          "id": "1",
+          "titulo": "Eclipse Final",
+          "anio": 2023,
+          "genero": "Ciencia Ficción",
+          "duracion": "2h 12m",
+          "calificacion": 4.6,
+          "imagen": "https://cdn.pixabay.com/photo/2016/06/27/17/38/solar-eclipse-1482921_1280.jpg",
+          "descripcion": "La humanidad enfrenta su última oportunidad cuando el sol comienza a apagarse misteriosamente.",
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+        },
+        {
+          "id": "8",
+          "titulo": "Destino Paralelo",
+          "anio": 2024,
+          "genero": "Ciencia Ficción",
+          "duracion": "2h 10m",
+          "calificacion": 4.7,
+          "imagen": "https://cdn.pixabay.com/photo/2015/12/30/05/43/total-lunar-eclipse-1113799_1280.jpg",
+          "descripcion": "Dos realidades colisionan cuando un experimento sale mal.",
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+        },
+        {
+          "id": "6",
+          "titulo": "Más Allá del Horizonte",
+          "anio": 2020,
+          "genero": "Aventura",
+          "duracion": "2h 20m",
+          "calificacion": 4.3,
+          "imagen": "https://cdn.pixabay.com/photo/2016/06/27/17/38/solar-eclipse-1482921_1280.jpg",
+          "descripcion": "Una expedición cruza territorios desconocidos en busca de una civilización perdida.",
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+        }
+      ]
     },
-    "3": {
-      "titulo": "Corazón de Acero",
-      "anio": 2024,
-      "genero": "Acción",
-      "duracion": "2h 5m",
-      "calificacion": 4.8,
-      "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/23/Adrian_helmet_1.jpg",
-      "descripcion": "Un exsoldado lucha contra una corporación que controla armas autónomas."
+
+    "drama_romance": {
+      "nombre": "Drama & Romance",
+      "peliculas": [
+        {
+          "id": "4",
+          "titulo": "La Última Nota",
+          "anio": 2021,
+          "genero": "Drama",
+          "duracion": "1h 48m",
+          "calificacion": 4.1,
+          "imagen": "https://cdn.pixabay.com/photo/2022/01/26/12/46/couple-6968798_1280.jpg",
+          "descripcion": "Un pianista retirado vuelve a los escenarios para enfrentar su pasado.",
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+        },
+        {
+          "id": "9",
+          "titulo": "Amor en Silencio",
+          "anio": 2021,
+          "genero": "Romance",
+          "duracion": "1h 50m",
+          "calificacion": 4.0,
+          "imagen": "https://cdn.pixabay.com/photo/2023/09/11/16/37/angel-8247278_1280.jpg",
+          "descripcion": "Una historia de amor que se comunica más con miradas que con palabras.",
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+        },
+        {
+          "id": "2",
+          "titulo": "Sombras de la Ciudad",
+          "anio": 2022,
+          "genero": "Suspenso",
+          "duracion": "1h 55m",
+          "calificacion": 4.2,
+          "imagen": "https://cdn.pixabay.com/photo/2023/03/02/19/37/tunnel-7826204_1280.jpg",
+          "descripcion": "Un detective descubre una red de secretos ocultos bajo la aparente calma urbana.",
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+        }
+      ]
     },
-    "4": {
-      "titulo": "La Última Nota",
-      "anio": 2021,
-      "genero": "Drama",
-      "duracion": "1h 48m",
-      "calificacion": 4.1,
-      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/SennMicrophone.jpg",
-      "descripcion": "Un pianista retirado vuelve a los escenarios para enfrentar su pasado."
-    },
-    "5": {
-      "titulo": "Código Fantasma",
-      "anio": 2023,
-      "genero": "Thriller",
-      "duracion": "2h 1m",
-      "calificacion": 4.4,
-      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Anonymous%20Hacker.png",
-      "descripcion": "Un hacker descubre un algoritmo capaz de predecir crímenes."
-    },
-    "6": {
-      "titulo": "Más Allá del Horizonte",
-      "anio": 2020,
-      "genero": "Aventura",
-      "duracion": "2h 20m",
-      "calificacion": 4.3,
-      "imagen": "https://cdn.pixabay.com/photo/2016/06/27/17/38/solar-eclipse-1482921_1280.jpg",
-      "descripcion": "Una expedición cruza territorios desconocidos en busca de una civilización perdida."
-    },
-    "7": {
-      "titulo": "Noche Carmesí",
-      "anio": 2022,
-      "genero": "Terror",
-      "duracion": "1h 42m",
-      "calificacion": 3.9,
-      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Redwood%20National%20Park%2C%20fog%20in%20the%20forest.jpg",
-      "descripcion": "Un pequeño pueblo es acechado por una presencia que solo aparece de noche."
-    },
-    "8": {
-      "titulo": "Destino Paralelo",
-      "anio": 2024,
-      "genero": "Ciencia Ficción",
-      "duracion": "2h 10m",
-      "calificacion": 4.7,
-      "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Ditchley%20door.jpg",
-      "descripcion": "Dos realidades colisionan cuando un experimento sale mal."
-    },
-    "9": {
-      "titulo": "Amor en Silencio",
-      "anio": 2021,
-      "genero": "Romance",
-      "duracion": "1h 50m",
-      "calificacion": 4.0,
-      "imagen": "https://upload.wikimedia.org/wikipedia/en/2/20/Amor_en_silencio_poster.jpg",
-      "descripcion": "Una historia de amor que se comunica más con miradas que con palabras."
-    },
-    "10": {
-      "titulo": "Ruta Salvaje",
-      "anio": 2023,
-      "genero": "Acción",
-      "duracion": "2h 8m",
-      "calificacion": 4.5,
-      "imagen": "https://www.newtral.es/wp-content/uploads/2021/08/hacia_rutas_salvajes_historia_real-1536x946.jpg",
-      "descripcion": "Una carrera ilegal se convierte en una lucha por sobrevivir."
+
+    "suspenso_terror": {
+      "nombre": "Suspenso & Terror",
+      "peliculas": [
+        {
+          "id": "2",
+          "titulo": "Sombras de la Ciudad",
+          "anio": 2022,
+          "genero": "Suspenso",
+          "duracion": "1h 55m",
+          "calificacion": 4.2,
+          "imagen": "https://cdn.pixabay.com/photo/2019/10/09/13/10/halloween-4537430_1280.jpg",
+          "descripcion": "Un detective descubre una red de secretos ocultos bajo la aparente calma urbana.",
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+        },
+        {
+          "id": "5",
+          "titulo": "Código Fantasma",
+          "anio": 2023,
+          "genero": "Thriller",
+          "duracion": "2h 1m",
+          "calificacion": 4.4,
+          "imagen": "https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg",
+          "descripcion": "Un hacker descubre un algoritmo capaz de predecir crímenes.",
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+        },
+        {
+          "id": "7",
+          "titulo": "Noche Carmesí",
+          "anio": 2022,
+          "genero": "Terror",
+          "duracion": "1h 42m",
+          "calificacion": 3.9,
+          "imagen": "https://cdn.pixabay.com/photo/2016/10/14/17/33/philadelphia-1740685_1280.jpg",
+          "descripcion": "Un pequeño pueblo es acechado por una presencia que solo aparece de noche.",
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+        }
+      ]
     }
   }
 }
