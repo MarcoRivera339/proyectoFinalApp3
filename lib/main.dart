@@ -6,7 +6,6 @@ import 'package:proyecto/firebase_options.dart';
 import 'package:proyecto/navigations/Bottomtabnavigator.dart';
 import 'package:proyecto/screens/homeScreen.dart';
 import 'package:proyecto/screens/loginScreen.dart';
-import 'package:proyecto/screens/perfilScreen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
