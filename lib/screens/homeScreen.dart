@@ -24,7 +24,6 @@ class _HomescreenState extends State<Homescreen> {
     return StreamBuilder<User?>(
       stream: _authStream,
       builder: (context, snapshot) {
-
         // ⏳ Esperando Firebase
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
@@ -34,15 +33,16 @@ class _HomescreenState extends State<Homescreen> {
 
         // 🔐 Usuario logueado → Drawer
         if (snapshot.hasData) {
-          return const Drawer();
+          return const Scaffold(
+            drawer: Drawer(),
+            body: Center(child: Text("Usuario logueado")),
+          );
         }
 
         // 👤 Usuario NO logueado → Home público
         return Scaffold(
           extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            title: const Text("ONEFLIX"),
-          ),
+          appBar: AppBar(title: const Text("ONEFLIX")),
           body: Stack(
             children: [
               SizedBox.expand(
@@ -73,7 +73,7 @@ class _HomescreenState extends State<Homescreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const LoginScreen(),
+                              builder: (_) => LoginScreen(),
                             ),
                           );
                         },
@@ -90,9 +90,7 @@ class _HomescreenState extends State<Homescreen> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (_) => const Registerscreen(),
-                            ),
+                            MaterialPageRoute(builder: (_) => Registerscreen()),
                           );
                         },
                         child: const Text("REGISTER"),

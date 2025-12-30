@@ -12,7 +12,8 @@
           "calificacion": 4.8,
           "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/23/Adrian_helmet_1.jpg",
           "descripcion": "Un exsoldado lucha contra una corporación que controla armas autónomas.",
-          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/CORAZONES%20DE%20ACERO%20-%20Tr%C3%A1iler%20Oficial%20en%20ESPA%C3%91OL%20_%20Sony%20Pictures%20Espa%C3%B1a.mp4"
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/CORAZONES%20DE%20ACERO%20-%20Tr%C3%A1iler%20Oficial%20en%20ESPA%C3%91OL%20_%20Sony%20Pictures%20Espa%C3%B1a.mp4",
+          "trailer": "https://www.youtube.com/watch?v=wn-MarXmrbo"
         },
         {
           "id": "10",
@@ -23,7 +24,8 @@
           "calificacion": 4.5,
           "imagen": "https://cdn.pixabay.com/photo/2014/12/01/15/54/red-deer-552913_1280.jpg",
           "descripcion": "Una carrera ilegal se convierte en una lucha por sobrevivir.",
-          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Hacia%20Rutas%20Salvajes%20(Trailer)%20%F0%9F%8E%AC.mp4"
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Hacia%20Rutas%20Salvajes%20(Trailer)%20%F0%9F%8E%AC.mp4",
+          "trailer": "https://www.youtube.com/watch?v=iPya7bEUNDs"
         },
         {
           "id": "5",
@@ -34,11 +36,11 @@
           "calificacion": 4.4,
           "imagen": "https://cdn.pixabay.com/photo/2016/08/02/17/02/stairs-1564112_1280.jpg",
           "descripcion": "Un hacker descubre un algoritmo capaz de predecir crímenes.",
-          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/C_digo_fuente_-_Trailer_Espa_ol_240P.mp4"
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/C_digo_fuente_-_Trailer_Espa_ol_240P.mp4",
+          "trailer": "https://www.youtube.com/watch?v=9MMPQ88NDWY"
         }
       ]
     },
-
     "ciencia_ficcion": {
       "nombre": "Ciencia Ficción",
       "peliculas": [
@@ -51,7 +53,8 @@
           "calificacion": 4.6,
           "imagen": "https://cdn.pixabay.com/photo/2016/06/27/17/38/solar-eclipse-1482921_1280.jpg",
           "descripcion": "La humanidad enfrenta su última oportunidad cuando el sol comienza a apagarse misteriosamente.",
-          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/ECLIPSE_A_Star_Wars_Story_2026_Final_Trailer_Disney_480P.mp4"
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/ECLIPSE_A_Star_Wars_Story_2026_Final_Trailer_Disney_480P.mp4",
+          "trailer": "https://www.youtube.com/watch?v=4cJpiOPKH14"
         },
         {
           "id": "8",
@@ -62,7 +65,8 @@
           "calificacion": 4.7,
           "imagen": "https://cdn.pixabay.com/photo/2015/12/30/05/43/total-lunar-eclipse-1113799_1280.jpg",
           "descripcion": "Dos realidades colisionan cuando un experimento sale mal.",
-          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Rumbos%20Paralelos%20-%20Tr%C3%A1iler%20Oficial.mp4"
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Rumbos%20Paralelos%20-%20Tr%C3%A1iler%20Oficial.mp4",
+          "trailer": "https://www.youtube.com/watch?v=01ed2P2ZkFQ"
         },
         {
           "id": "6",
@@ -73,11 +77,11 @@
           "calificacion": 4.3,
           "imagen": "https://cdn.pixabay.com/photo/2016/06/27/17/38/solar-eclipse-1482921_1280.jpg",
           "descripcion": "Una expedición cruza territorios desconocidos en busca de una civilización perdida.",
-          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/M%C3%A1s%20all%C3%A1%20del%20horizonte%20-%20Trailer%20en%20espa%C3%B1ol%20latino%20-%20Pel%C3%ADcula%20de%20Sci-Fi%20_%20Adrenalina%20Freezone.mp4"
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/M%C3%A1s%20all%C3%A1%20del%20horizonte%20-%20Trailer%20en%20espa%C3%B1ol%20latino%20-%20Pel%C3%ADcula%20de%20Sci-Fi%20_%20Adrenalina%20Freezone.mp4",
+          "trailer": "https://www.youtube.com/watch?v=wOui2Pig1hY"
         }
       ]
     },
-
     "drama_romance": {
       "nombre": "Drama & Romance",
       "peliculas": [
@@ -90,7 +94,8 @@
           "calificacion": 4.1,
           "imagen": "https://cdn.pixabay.com/photo/2022/01/26/12/46/couple-6968798_1280.jpg",
           "descripcion": "Un pianista retirado vuelve a los escenarios para enfrentar su pasado.",
-          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Trailer_-_La_ltima_nota_2006_144P.mp4"
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Trailer_-_La_ltima_nota_2006_144P.mp4",
+          "trailer": "https://www.youtube.com/watch?v=HMMqe7dVfdo"
         },
         {
           "id": "9",
@@ -101,7 +106,8 @@
           "calificacion": 4.0,
           "imagen": "https://cdn.pixabay.com/photo/2023/09/11/16/37/angel-8247278_1280.jpg",
           "descripcion": "Una historia de amor que se comunica más con miradas que con palabras.",
-          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Trailer%20Amor%20en%20Silencio.mp4"
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Trailer%20Amor%20en%20Silencio.mp4",
+          "trailer": "https://www.youtube.com/watch?v=rBCqYo3wwlQ&list=RDrBCqYo3wwlQ&start_radio=1"
         },
         {
           "id": "2",
@@ -112,11 +118,11 @@
           "calificacion": 4.2,
           "imagen": "https://cdn.pixabay.com/photo/2023/03/02/19/37/tunnel-7826204_1280.jpg",
           "descripcion": "Un detective descubre una red de secretos ocultos bajo la aparente calma urbana.",
-          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Ciudad_de_sombras_Tr_iler_oficial_Netflix_Espa_a_480P.mp4"
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Ciudad_de_sombras_Tr_iler_oficial_Netflix_Espa_a_480P.mp4",
+          "trailer": "https://www.youtube.com/watch?v=LVm-HRwiLO8"
         }
       ]
     },
-
     "suspenso_terror": {
       "nombre": "Suspenso & Terror",
       "peliculas": [
@@ -129,18 +135,8 @@
           "calificacion": 4.2,
           "imagen": "https://cdn.pixabay.com/photo/2019/10/09/13/10/halloween-4537430_1280.jpg",
           "descripcion": "Un detective descubre una red de secretos ocultos bajo la aparente calma urbana.",
-          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
-        },
-        {
-          "id": "5",
-          "titulo": "Código Fantasma",
-          "anio": 2023,
-          "genero": "Thriller",
-          "duracion": "2h 1m",
-          "calificacion": 4.4,
-          "imagen": "https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg",
-          "descripcion": "Un hacker descubre un algoritmo capaz de predecir crímenes.",
-          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4",
+          "trailer": "https://www.youtube.com/watch?v=LVm-HRwiLO8"
         },
         {
           "id": "7",
@@ -151,7 +147,8 @@
           "calificacion": 3.9,
           "imagen": "https://cdn.pixabay.com/photo/2016/10/14/17/33/philadelphia-1740685_1280.jpg",
           "descripcion": "Un pequeño pueblo es acechado por una presencia que solo aparece de noche.",
-          "video": "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4"
+          "video": "https://cdn.jsdelivr.net/gh/litomax01/videosMP4MOVILES3@main/Trailer_%20Profundo%20Carmes%C3%AD.mp4",
+          "trailer": "https://www.youtube.com/watch?v=FtbUEJGWfh8"
         }
       ]
     }

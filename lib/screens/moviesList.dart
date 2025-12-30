@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:proyecto/screens/youtube_trailer_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'video_player_screen.dart';
-
 
 class Movieslist extends StatelessWidget {
   const Movieslist({super.key});
@@ -132,6 +133,24 @@ void mostrarInfo(BuildContext context, Map<String, dynamic> pelicula) {
             );
           },
         ),
+
+        ElevatedButton.icon(
+  icon: const Icon(Icons.movie),
+  label: const Text("Ver tráiler"),
+  style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+  onPressed: () {
+    Navigator.pop(context); // cierra el AlertDialog
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) =>
+            YoutubeTrailerScreen(url: pelicula['trailer']),
+      ),
+    );
+  },
+),
+
+
         TextButton(
           onPressed: () => Navigator.pop(context),
           child: const Text('Cerrar'),
@@ -139,4 +158,12 @@ void mostrarInfo(BuildContext context, Map<String, dynamic> pelicula) {
       ],
     ),
   );
+}
+
+Future<void> abrirTrailer(String url) async {
+  final Uri uri = Uri.parse(url);
+
+  if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+    throw 'No se pudo abrir el trailer';
+  }
 }
