@@ -7,7 +7,19 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login")),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: const Text(
+          "ONEFLIX",
+          style: TextStyle(
+            color: Colors.redAccent,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 2,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: formulario(context),
     );
   }
@@ -17,34 +29,105 @@ Widget formulario(context) {
   TextEditingController correo = TextEditingController();
   TextEditingController contrasenia = TextEditingController();
 
-  return Padding(
-    padding: const EdgeInsets.all(16.0),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        TextField(
-          controller: correo,
-          decoration: const InputDecoration(labelText: "Ingresar correo"),
+  return Stack(
+    children: [
+      SizedBox.expand(
+        child: Image.asset(
+          "assets/images/one.jpg", // tu imagen de fondo
+          fit: BoxFit.cover,
         ),
-        const SizedBox(height: 16),
-        TextField(
-          controller: contrasenia,
-          obscureText: true,
-          decoration: const InputDecoration(labelText: "Ingresar contraseña"),
+      ),
+      Container(
+        color: Colors.black.withOpacity(0.6), // overlay oscuro
+      ),
+      Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  "Inicia sesión para continuar",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+                const SizedBox(height: 30),
+                TextField(
+                  controller: correo,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    labelText: "Correo",
+                    labelStyle: const TextStyle(color: Colors.white70),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white38),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.redAccent),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    prefixIcon: const Icon(Icons.email, color: Colors.white70),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: contrasenia,
+                  obscureText: true,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    labelText: "Contraseña",
+                    labelStyle: const TextStyle(color: Colors.white70),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white38),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.redAccent),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    prefixIcon: const Icon(Icons.lock, color: Colors.white70),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                    ),
+                    onPressed: () => login(context, correo, contrasenia),
+                    child: const Text(
+                      "INGRESAR",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                TextButton(
+                  onPressed: () => recuperarContrasena(context, correo),
+                  child: const Text(
+                    "¿Olvidaste la contraseña?",
+                    style: TextStyle(color: Colors.white70, fontSize: 14),
+                  ),
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
+          ),
         ),
-        const SizedBox(height: 24),
-        FilledButton.icon(
-          onPressed: () => login(context, correo, contrasenia),
-          icon: const Icon(Icons.login),
-          label: const Text("Ingresar"),
-        ),
-        const SizedBox(height: 16),
-        TextButton(
-          onPressed: () => recuperarContrasena(context, correo),
-          child: const Text("¿Olvidaste la contraseña?"),
-        ),
-      ],
-    ),
+      ),
+    ],
   );
 }
 
@@ -55,7 +138,6 @@ Future<void> login(context, correo, contrasenia) async {
       password: contrasenia.text.trim(),
     );
 
-    // 👇 ESTO ES LA CLAVE
     Navigator.pop(context);
   } on FirebaseAuthException catch (e) {
     String mensaje = "Ocurrió un error inesperado";
@@ -84,7 +166,6 @@ Future<void> login(context, correo, contrasenia) async {
   }
 }
 
-// Función para recuperar contraseña
 Future<void> recuperarContrasena(context, TextEditingController correo) async {
   if (correo.text.isEmpty) {
     showDialog(
@@ -106,9 +187,7 @@ Future<void> recuperarContrasena(context, TextEditingController correo) async {
   }
 
   try {
-    await FirebaseAuth.instance.sendPasswordResetEmail(
-      email: correo.text.trim(),
-    );
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: correo.text.trim());
     showDialog(
       context: context,
       builder: (_) => AlertDialog(

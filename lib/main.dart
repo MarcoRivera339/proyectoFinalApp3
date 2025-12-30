@@ -31,7 +31,7 @@ class Proyecto extends StatelessWidget {
       routes: {
         "/home": (context) => const Homescreen(),
         "/login": (context) => const LoginScreen(),
-        "/perfil": (context) => const MiPerfil(),
+
       },
       debugShowCheckedModeBanner: false,
 

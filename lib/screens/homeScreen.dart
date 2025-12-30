@@ -24,14 +24,12 @@ class _HomescreenState extends State<Homescreen> {
     return StreamBuilder<User?>(
       stream: _authStream,
       builder: (context, snapshot) {
-        // ⏳ Esperando Firebase
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );
         }
 
-        // 🔐 Usuario logueado → Drawer
         if (snapshot.hasData) {
           return const Scaffold(
             drawer: Drawer(),
@@ -39,64 +37,114 @@ class _HomescreenState extends State<Homescreen> {
           );
         }
 
-        // 👤 Usuario NO logueado → Home público
         return Scaffold(
           extendBodyBehindAppBar: true,
-          appBar: AppBar(title: const Text("ONEFLIX")),
+          appBar: AppBar(
+            title: const Text(
+              "ONEFLIX",
+              style: TextStyle(
+                color: Colors.redAccent,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2,
+              ),
+            ),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
           body: Stack(
             children: [
               SizedBox.expand(
-                child: Opacity(
-                  opacity: 0.5,
-                  child: Image.asset(
-                    "assets/images/one.jpg",
-                    fit: BoxFit.cover,
-                  ),
+                child: Image.asset(
+                  "assets/images/one.jpg",
+                  fit: BoxFit.cover,
                 ),
               ),
-
+              Container(
+                color: Colors.black.withOpacity(0.3), // overlay tipo Netflix
+              ),
               Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      "Entretenimiento de calidad",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    const SizedBox(height: 20),
-
-                    SizedBox(
-                      width: 220,
-                      height: 50,
-                      child: FilledButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => LoginScreen(),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        "Entretenimiento de calidad",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          letterSpacing: 1.2,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.redAccent,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Text(
+                          "Por tan solo \$5 mensuales",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      SizedBox(
+                        width: 220,
+                        height: 50,
+                        child: FilledButton(
+                          style: FilledButton.styleFrom(
+                            backgroundColor: Colors.redAccent,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => LoginScreen()),
+                            );
+                          },
+                          child: const Text(
+                            "LOGIN",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.white,
                             ),
-                          );
-                        },
-                        child: const Text("Login"),
+                          ),
+                        ),
                       ),
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    SizedBox(
-                      width: 220,
-                      height: 50,
-                      child: OutlinedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => Registerscreen()),
-                          );
-                        },
-                        child: const Text("REGISTER"),
+                      const SizedBox(height: 16),
+                      SizedBox(
+                        width: 220,
+                        height: 50,
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(color: Colors.redAccent, width: 2),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => Registerscreen()),
+                            );
+                          },
+                          child: const Text(
+                            "REGISTRARSE",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.redAccent,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

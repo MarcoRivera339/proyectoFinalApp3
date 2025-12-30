@@ -15,13 +15,6 @@ class Registerscreen extends StatefulWidget {
 class _RegisterscreenState extends State<Registerscreen> {
   XFile? foto;
 
-  void cambiarFoto(XFile? nuevaFoto) {
-    if (nuevaFoto == null) return;
-    setState(() {
-      foto = nuevaFoto;
-    });
-  }
-
   final cedula = TextEditingController();
   final nombre = TextEditingController();
   final apellido = TextEditingController();
@@ -29,80 +22,148 @@ class _RegisterscreenState extends State<Registerscreen> {
   final email = TextEditingController();
   final password = TextEditingController();
 
+  void cambiarFoto(XFile? nuevaFoto) {
+    if (nuevaFoto == null) return;
+    setState(() => foto = nuevaFoto);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Register")),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            _campo("Cédula", cedula, TextInputType.number),
-            _campo("Nombre", nombre),
-            _campo("Apellido", apellido),
-            _campo("Edad", edad, TextInputType.number),
-            _campo("Email", email, TextInputType.emailAddress),
-            _campo("Contraseña", password, TextInputType.text, true),
-            const SizedBox(height: 20),
-            foto == null
-                ? const CircleAvatar(
-                    radius: 60,
-                    child: Icon(Icons.person, size: 60),
-                  )
-                : CircleAvatar(
-                    radius: 60,
-                    backgroundImage: FileImage(File(foto!.path)),
-                  ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: const Text(
+          "ONEFLIX",
+          style: TextStyle(
+            color: Colors.redAccent,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 2,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: Stack(
+        children: [
+          SizedBox.expand(
+            child: Image.asset("assets/images/one.jpg", fit: BoxFit.cover),
+          ),
+          Container(color: Colors.black.withOpacity(0.7)),
+          SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+            child: Column(
               children: [
-                IconButton(
-                  icon: const Icon(Icons.camera_alt),
-                  onPressed: () => abrirCamara(cambiarFoto),
+                const SizedBox(height: 40),
+                const Text(
+                  "Crea tu cuenta en ONEFLIX",
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.photo),
-                  onPressed: () => abrirGaleria(cambiarFoto),
+                const SizedBox(height: 20),
+                _campo("Cédula", cedula, Icons.badge),
+                _campo("Nombre", nombre, Icons.person),
+                _campo("Apellido", apellido, Icons.person),
+                _campo("Edad", edad, Icons.cake),
+                _campo("Email", email, Icons.email),
+                _campo("Contraseña", password, Icons.lock, oculto: true),
+                const SizedBox(height: 20),
+
+                CircleAvatar(
+                  radius: 60,
+                  backgroundColor: Colors.white24,
+                  backgroundImage: foto != null
+                      ? FileImage(File(foto!.path))
+                      : null,
+                  child: foto == null
+                      ? const Icon(Icons.person, size: 60, color: Colors.white)
+                      : null,
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.camera_alt, color: Colors.white),
+                      onPressed: () => abrirCamara(cambiarFoto),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.photo, color: Colors.white),
+                      onPressed: () => abrirGaleria(cambiarFoto),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 20),
+
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                    ),
+                    onPressed: () => register(
+                      context,
+                      cedula,
+                      nombre,
+                      apellido,
+                      edad,
+                      email,
+                      password,
+                      foto,
+                    ),
+                    child: const Text(
+                      "REGISTRARSE",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text(
+                    "¿Ya tienes una cuenta? Inicia sesión",
+                    style: TextStyle(color: Colors.white70),
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 20),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.person_add),
-              label: const Text("Registrar"),
-              onPressed: () => register(
-                context,
-                cedula,
-                nombre,
-                apellido,
-                edad,
-                email,
-                password,
-                foto,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _campo(
     String label,
-    TextEditingController controller, [
-    TextInputType tipo = TextInputType.text,
+    TextEditingController controller,
+    IconData icon, {
     bool oculto = false,
-  ]) {
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: TextField(
         controller: controller,
-        keyboardType: tipo,
         obscureText: oculto,
+        style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
           labelText: label,
-          border: const OutlineInputBorder(),
+          labelStyle: const TextStyle(color: Colors.white70),
+          prefixIcon: Icon(icon, color: Colors.white70),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.white38),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.redAccent),
+            borderRadius: BorderRadius.circular(8),
+          ),
         ),
       ),
     );
@@ -110,7 +171,7 @@ class _RegisterscreenState extends State<Registerscreen> {
 }
 
 ////////////////////////////////////////////////////////////
-/// 🔐 REGISTRO
+/// 🔐 REGISTRO CONTROLADO POR AUTH
 ////////////////////////////////////////////////////////////
 
 Future<void> register(
@@ -124,76 +185,58 @@ Future<void> register(
   XFile? foto,
 ) async {
   try {
-    // 1️⃣ Crear usuario en Firebase Auth
-    UserCredential userCredential = await FirebaseAuth.instance
+    final credenciales = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(
-      email: email.text.trim(),
-      password: password.text.trim(),
-    );
+          email: email.text.trim(),
+          password: password.text.trim(),
+        );
 
-    String uid = userCredential.user!.uid;
+    final uid = credenciales.user!.uid;
 
-    // 2️⃣ Subir imagen a Supabase (opcional)
     String fotoUrl = "";
     if (foto != null) {
-      try {
-        fotoUrl = await subirImagenSupabase(foto) ?? "";
-      } catch (e) {
-        print("⚠️ Error subiendo imagen: $e");
-      }
+      fotoUrl = await subirImagenSupabase(foto);
     }
 
-    // 3️⃣ Guardar datos en Realtime Database
-    DatabaseReference ref = FirebaseDatabase.instance.ref("usuarios/$uid");
-    await ref.set({
-      "cedula": cedula.text,
-      "nombre": nombre.text,
-      "apellido": apellido.text,
-      "edad": edad.text,
-      "email": email.text,
+    await FirebaseDatabase.instance.ref("usuarios/$uid").set({
+      "cedula": cedula.text.trim(),
+      "nombre": nombre.text.trim(),
+      "apellido": apellido.text.trim(),
+      "edad": edad.text.trim(),
+      "email": email.text.trim(),
       "foto": fotoUrl,
     });
 
-    // 4️⃣ Mostrar diálogo de confirmación
-    await showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text("Registro exitoso"),
-        content: const Text("La cuenta ha sido creada correctamente."),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text("Aceptar"),
-          ),
-        ],
-      ),
-    );
+    // 🔑 CLAVE ABSOLUTA
+    // Regresa a la raíz para que authStateChanges actúe
+    Navigator.of(context).popUntil((route) => route.isFirst);
+  } on FirebaseAuthException catch (e) {
+    String mensaje = "Error al registrar usuario";
 
-    // 5️⃣ Cerrar sesión y volver al Home
-    await FirebaseAuth.instance.signOut();
-    Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
+    if (e.code == 'email-already-in-use') {
+      mensaje = "Este correo ya está registrado";
+    } else if (e.code == 'weak-password') {
+      mensaje = "La contraseña es muy débil";
+    }
 
-  } catch (e) {
-    print("❌ Error registro: $e");
     ScaffoldMessenger.of(
       context,
-    ).showSnackBar(
-      const SnackBar(content: Text("Error al registrar usuario")),
-    );
+    ).showSnackBar(SnackBar(content: Text(mensaje)));
   }
 }
 
 ////////////////////////////////////////////////////////////
-/// ☁️ SUBIR IMAGEN A SUPABASE
+/// ☁️ SUPABASE
 ////////////////////////////////////////////////////////////
 
-Future<String?> subirImagenSupabase(XFile foto) async {
+Future<String> subirImagenSupabase(XFile foto) async {
   final file = File(foto.path);
-  final fileName = 'usuarios/${DateTime.now().millisecondsSinceEpoch}.png';
+  final fileName = "usuarios/${DateTime.now().millisecondsSinceEpoch}.png";
+
   await Supabase.instance.client.storage
       .from('appMovie')
       .upload(fileName, file, fileOptions: const FileOptions(upsert: true));
+
   return Supabase.instance.client.storage
       .from('appMovie')
       .getPublicUrl(fileName);

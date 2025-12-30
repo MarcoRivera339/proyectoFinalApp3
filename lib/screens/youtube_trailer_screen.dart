@@ -8,19 +8,30 @@ class YoutubeTrailerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final WebViewController controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..loadRequest(Uri.parse(url));
+
     return Scaffold(
+      backgroundColor: Colors.black, // Fondo negro Netflix
       appBar: AppBar(
-        title: const Text("Tráiler"),
+        backgroundColor: Colors.black,
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, color: Colors.redAccent),
           onPressed: () => Navigator.pop(context),
         ),
+        title: const Text(
+          "TRÁILER",
+          style: TextStyle(
+            color: Colors.redAccent,
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+          ),
+        ),
+        centerTitle: true,
       ),
-      body: WebViewWidget(
-        controller: WebViewController()
-          ..setJavaScriptMode(JavaScriptMode.unrestricted)
-          ..loadRequest(Uri.parse(url)),
-      ),
+      body: WebViewWidget(controller: controller),
     );
   }
 }
