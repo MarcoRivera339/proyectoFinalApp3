@@ -49,7 +49,7 @@ class _HomescreenState extends State<Homescreen> {
                 child: Opacity(
                   opacity: 0.5,
                   child: Image.asset(
-                    "images/oneflixC.png",
+                    "assets/images/one.jpg",
                     fit: BoxFit.cover,
                   ),
                 ),

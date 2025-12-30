@@ -21,7 +21,7 @@ class ListaPeliculas extends StatelessWidget {
   Future<Map<String, dynamic>> leerCategorias(BuildContext context) async {
     final jsonString = await DefaultAssetBundle.of(
       context,
-    ).loadString('data/peliculas.json');
+    ).loadString('assets/data/peliculas.json');
 
     final Map<String, dynamic> data = json.decode(jsonString);
     return Map<String, dynamic>.from(data['categorias']);
